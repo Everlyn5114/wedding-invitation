@@ -10,11 +10,13 @@
 body, html {
     position: relative;
     height: 100%;
-    /* 💡 核心升级：把 'Noto Serif SC' 顶到中文第一顺位，确保安卓和苹果手机都能在线加载优雅的宋体！ */
-    font-family: "Georgia", "Nimbus Roman No9 L", "Noto Serif SC", "Songti SC", "Source Han Serif SC", serif;
+    font-family: "Noto Serif SC", "Georgia", "Songti SC", "Source Han Serif SC", serif !important;
     color: #4a4a4a;
     text-align: center;
-    background-color: #fff8f9;
+    
+    /* ⚡ 核心升级：全站背景强行同步为手绘图的“高奢复古奶油燕麦色” */
+    background-color: #f4ebd9 !important; 
+    
     overflow: hidden; 
     -webkit-font-smoothing: antialiased;
 }
@@ -34,7 +36,7 @@ body, html {
 }
 
 .section-title {
-    color: #465f78; 
+    color: #8c221e; 
     font-size: 28px;
     margin-bottom: 30px;
     letter-spacing: 4px;
@@ -61,8 +63,8 @@ body, html {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     
-    /* 💡 核心升级：把里面音符的颜色改成我们标志性的莫兰迪灰蓝色 */
-    color: #b47829 !important;
+    
+    color: #8c221e !important;
     
     border-radius: 50%;
     display: flex;
@@ -168,53 +170,135 @@ body, html {
     text-transform: uppercase;
 }
 
+
 /* --- 第2页：诚挚邀请诗歌风 --- */
+
+/* ⚡ 核心修改：在原位直接把 photo1 背景图接回来，并调整好居中铺满 */
+.swiper-slide:nth-child(2) {
+    background-image: url('photo1.jpeg') !important; /* 👈 如果你的图片后缀是 .jpg，请改成 photo1.jpg */
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    
+    height: 100vh !important; 
+    max-height: 100vh !important;
+    overflow: hidden !important; 
+}
+
+/* ⚡ 极其重要：既然加回了照片背景，为了衬托白色或者暗色文字，
+   我们把这一页的遮罩层恢复成优雅的半透明光影，这样既有照片，又不会和底层小麦色产生突兀断层 */
+.swiper-slide:nth-child(2) .overlay-dark {
+    display: block !important;
+    opacity: 0.45 !important;
+    background: rgba(0, 0, 0, 0.45) !important;
+    height: 100% !important;
+    position: absolute !important;
+    top: 0; left: 0; width: 100%;
+    z-index: 1 !important;
+}
+
 .font-romantic {
-    color: #333333;
+    color: #ffffff !important; /* ⚡ 既然有了照片背景，文字改成白色会更清晰高级 */
+    background: transparent !important; 
+    position: relative; z-index: 2; /* 确保文字在遮罩层上方 */
 }
 
 .poem-text {
-    /* 💡 核心升级：换上印刷体宋体 */
     font-family: "Songti SC", "Source Han Serif SC", "SimSun", serif;
     font-size: 18px;
     letter-spacing: 3px;
     margin-bottom: 12px;
+    color: #ffffff !important; /* ⚡ 文字改白色 */
+    background: transparent !important; 
+    position: relative; z-index: 2;
 }
 
 .couple-names {
     font-family: 'Great Vibes', 'Parisienne', 'Cedarville Cursive', cursive;
-    
-    /* 💡 稍微把字号从 46px 优化到 36px，既能保持大气的视觉，又能确保手机上能塞进一行 */
     font-size: 36px !important; 
-    
-    /* ⚡ 核心加码：强制文字在一行内显示，绝对不换行 */
     white-space: nowrap !important;
     
-    /* 让容器拥有最大宽度和自动缩放感 */
     width: 100%;
     max-width: 100vw;
     display: block;
     
     text-transform: none !important; 
     letter-spacing: 1px !important;
-    color: #392f09; 
+    
+    /* ⚡ 配合照片背景，名字可以换成高奢的反白或极其亮丽的浅色，这里先换成纯白，你可以根据喜好微调 */
+    color: #8c221e !important; 
+    
+    background: transparent !important;
+    background-color: transparent !important;
+    
     margin: 15px auto;
     font-weight: 500;
+    position: relative; z-index: 2;
 }
 
 .poem-sub {
     font-family: "Songti SC", "Source Han Serif SC", serif;
     font-size: 14px;
-    color: #777777;
+    color: #f3eada !important; /* ⚡ 副标题改浅灰色 */
+    background: transparent !important; 
+    position: relative; z-index: 2;
 }
 
 /* --- 第3页：照片文案页 --- */
+
+/* ⚡ 1. 核心：恢复 photo2 背景图，填补刚才被误删的视觉空白 */
+.story-page {
+    background-image: url('photo2.jpeg') !important; /* 👈 确认一下文件名，如果是 .jpg 请改为 .jpg */
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+}
+
+/* ⚡ 2. 核心：恢复遮罩层，让照片背景和文字之间产生舒适的光影对比 */
+.story-page .overlay-dark {
+    display: block !important;
+    opacity: 0.45 !important;
+    background: rgba(0, 0, 0, 0.45) !important;
+    height: 100% !important;
+    position: absolute !important;
+    top: 0; left: 0; width: 100%;
+    z-index: 1 !important;
+}
+
+/* 1. 给包裹文字的大容器设定绝对定位 */
+.story-page .page-content {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    padding-top: 80px !important; /* ⚡ 这里的 80px 是距离顶部的距离，可微调 */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    z-index: 2 !important;
+    pointer-events: none; /* 确保不影响点击下方照片 */
+}
+
+/* 2. 文字本身的样式保持不变 */
 .story-words {
-    /* 💡 核心升级：让故事文案像读情书一样温柔 */
     font-family: "Songti SC", "Source Han Serif SC", "SimSun", serif;
     font-size: 16px;
-    line-height: 2.2;
+    line-height: 2.0;
     letter-spacing: 2px;
+    color: #ffffff !important; /* 鉴于背景较暗，建议保持纯白 */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* 加上轻微阴影，保证在天空下绝对清晰 */
+    margin: 0 !important;
+    padding: 10px 20px !important;
+}
+
+/* 确保 alignment 的 class 不会打乱定位 */
+.align-left, .align-right {
+    text-align: center !important;
+    margin: 0 !important;
 }
 
 /* --- 第4页：遇见彼此（新人介绍） --- */
@@ -246,7 +330,7 @@ body, html {
 
 .intro-box h3 {
     font-size: 16px;
-    color: #d63384;
+    color: #8c221e;
     margin-bottom: 8px;
 }
 
@@ -257,116 +341,117 @@ body, html {
 }
 
 /* --- 第5页：正式邀请+微缩倒计时 --- */
+.bg-image-page {
+    background-color: #f3eada !important;
+    background-image: none !important;
+}
+
+/* Ins风主标题：极细、超宽字距，非常有冷淡高级感 */
+.ins-invitation-title {
+    font-size: 24px !important;
+    color: #8c221e !important; /* 核心暗红色 */
+    letter-spacing: 6px !important; /* 极宽字距是 Ins 风的灵魂 */
+    font-weight: 500 !important;
+    margin-bottom: 15px !important;
+}
+
+/* 邀请函正文 */
 .invitation-main {
-    font-size: 15px;
-    line-height: 1.8;
-    letter-spacing: 1px;
-    margin-bottom: 30px;
+    font-size: 14px !important;
+    line-height: 1.8 !important;
+    letter-spacing: 1.5px !important;
+    color: #555555 !important; /* 优雅的深炭灰 */
+    margin-bottom: 45px !important; /* 与下方倒计时拉开大留白 */
+    max-width: 85% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
-.countdown-card-mini {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(8px); /* 毛玻璃效果 */
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    padding: 15px;
-    border-radius: 16px;
-    width: 100%;
+/* ⚡ 核心革命：彻底拔除磨砂框！变成一个全透明、充满呼吸感的容器 */
+.countdown-ins-wrapper {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    width: 100% !important;
+    padding: 0 !important;
 }
 
-.countdown-card-mini p {
-    font-size: 13px;
-    margin-bottom: 12px;
-    letter-spacing: 1px;
+/* “距离执手婚礼还有”提示词 */
+.ins-timer-hint {
+    font-size: 13px !important;
+    letter-spacing: 3px !important;
+    color: #7e6b5a !important; /* 优雅的灰褐色 */
+    margin-bottom: 25px !important;
+    font-weight: 500 !important;
 }
 
+/* 计时器对齐 */
 .countdown-timer {
-    display: flex;
-    justify-content: space-around;
+    display: flex !important;
+    justify-content: space-around !important;
+    max-width: 90% !important;
+    margin: 0 auto !important;
 }
 
 .time-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 22% !important;
 }
 
 .time-box span {
-    font-family: "Georgia", serif !important;
-    font-size: 22px !important;
-    font-weight: bold !important;
-    color: #ffffff;
-    background: #475460; /* 倒计时方块颜色也同步换成高级莫兰迪灰蓝 */
-    padding: 5px 8px;
-    border-radius: 6px;
-    min-width: 38px;
+    background: transparent !important; 
+    box-shadow: none !important;
+    border: none !important;
+    
+    /* ⚡ 核心革命：换成和 Timeline 一模一样的高奢古典衬线字体！
+       带有优雅的修饰角和艺术拉丝感，完全打破规整和刻板 */
+    font-family: "Georgia", "Times New Roman", "New York", serif !important;
+    
+    color: #8c221e !important; /* 核心暗红色 */
+    font-size: 32px !important; /* 衬线体稍微大一点（32px）会更显杂志排版的张力 */
+    font-weight: bold !important; /* 稍微加粗，凸显艺术线条的变化 */
+    
+    width: auto !important;
+    height: auto !important;
+    line-height: 1.1 !important;
+    min-width: unset !important;
+    text-align: center !important;
+    display: inline-block !important;
+    letter-spacing: 0px !important; /* 这种字体不需要加字距，原本的间架结构就极美 */
 }
 
+/* 微微调整下方小标签的颜色和粗细，让整体更像一套高级的 Ins 挂历 */
 .time-box label {
-    font-size: 10px;
-    margin-top: 4px;
-    opacity: 0.8;
+    font-size: 11px !important;
+    margin-top: 5px !important;
+    color: #8c221e !important; /* 让天时分秒也用暗红色，保持极简纯粹 */
+    letter-spacing: 1px !important;
+    font-weight: 600 !important;
+    opacity: 0.85 !important;
 }
 
-/* --- 第6页：时间流程线 --- */
-.schedule-card {
-    background: rgb(255, 255, 255);
-    width: 90%;
-    max-width: 320px;
-    padding: 25px 20px;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(214, 51, 132, 0.06);
+/* 调整倒计时容器横向间距，让没有框的数字分布得更清爽 */
+.countdown-timer {
+    display: flex !important;
+    justify-content: space-around !important;
+    max-width: 80% !important; /* 稍微收紧一点，让无框数字显得更加精致凝聚 */
+    margin: 0 auto !important;
 }
 
-.schedule-date {
-    font-size: 15px;
-    font-weight: bold;
-    color: #bd9868;
-    margin-bottom: 20px;
-    border-bottom: 1px dashed #ffccd5;
-    padding-bottom: 10px;
-}
 
-.process-line {
-    text-align: left;
-    border-left: 2px solid #e3c0c6;
-    padding-left: 15px;
-    margin-left: 10px;
-}
-
-.process-item {
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.process-item::before {
-    content: '';
-    position: absolute;
-    left: -20px; top: 5px;
-    width: 8px; height: 8px;
-    background: #f5c491;
-    border-radius: 50%;
-}
-
-.process-item .time {
-    font-weight: bold;
-    color: #333;
-    margin-right: 10px;
-}
-
-.process-item .action {
-    color: #666;
-    font-size: 14px;
-}
-
-/* --- 第7页：地址卡片与一键导航 --- */
+/* --- 第7页：婚礼地点页（原位改写，绝不追加新代码） --- */
 .venue-card {
-    background: white;
+    /* ⚡ 1. 彻底砸碎大白框与生硬阴影：背景改成全透明，融入小麦色 */
+    background: transparent !important;
     width: 90%;
     max-width: 320px;
-    padding: 15px;
+    padding: 15px 0 !important; /* 释放左右两边的缩进，更舒展 */
     border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(214, 51, 132, 0.06);
+    box-shadow: none !important; /* 扔掉阴影 */
 }
 
 .venue-img {
@@ -375,13 +460,19 @@ body, html {
     background-size: cover;
     background-position: center;
     border-radius: 12px;
-    margin-bottom: 15px;
+    margin-bottom: 22px !important; /* 稍微拉开一点跟地名标题的间距 */
+    /* ⚡ 加上一丝丝若有若无的超淡暖调微光阴影，像冲洗出来的拍立得相片浮在纸上 */
+    box-shadow: 0 4px 15px rgba(140, 34, 30, 0.04) !important; 
 }
 
 .venue-card h3 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 8px;
+    /* ⚡ 2. 地名完美同步 Timeline：换上高奢 Georgia 古典英文衬线体 */
+    font-family: "Georgia", serif !important;
+    font-size: 20px !important; /* 微微放大一点，提升画册质感 */
+    font-weight: bold !important;
+    color: #8c221e !important; /* 统一换成全站主调暗红色 */
+    margin-bottom: 25px !important; /* 与下方按钮拉开优雅的留白 */
+    letter-spacing: 0.5px !important;
 }
 
 .venue-addr {
@@ -392,15 +483,23 @@ body, html {
 }
 
 .nav-btn {
-    display: block;
-    background: #69522a;
-    color: white;
+    display: inline-block !important; /* ⚡ 3. 拒绝死板的长条撑满，改成随文字自动收缩的胶囊 */
+    
+    /* ⚡ 4. 彻底抛弃泥土色：背景彻底变全透明 */
+    background: transparent !important;
+    
+    /* ⚡ 5. 换上法式极简线条：加上极细的暗红色精细外边框 */
+    border: 1px solid rgba(140, 34, 30, 0.4) !important; 
+    color: #8c221e !important; /* 按钮字色同步为暗红色 */
+    
     text-decoration: none;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+    padding: 10px 24px !important; /* 调整为饱满的胶囊型内边距 */
+    border-radius: 30px !important; /* 变成圆润、轻盈的法式线条小胶囊 */
+    
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1.5px !important; /* 微微加宽按钮字距，拉满 Ins 冷淡风 */
+    box-shadow: none !important; /* 彻底清除原本生硬的粉红阴影 */
 }
 
 /* ==========================================================================
@@ -413,15 +512,17 @@ body, html {
     transform: translateX(-50%) !important;
     width: 20px;
     height: 20px;
-    border-right: 2px solid rgba(214, 51, 132, 0.6);
-    border-bottom: 2px solid rgba(214, 51, 132, 0.6);
-    transform: translateX(-50%) rotate(45deg) !important; /* 优雅的V字形小箭头 */
+    /* ⚡ 修改这里：将粉色替换为高奢暗红 */
+    border-right: 2px solid #8c221e;
+    border-bottom: 2px solid #8c221e;
+    transform: translateX(-50%) rotate(45deg) !important; 
     z-index: 10;
     animation: bounceArrow 2s infinite;
 }
 
 /* 针对暗色背景页，箭头强制变成白色，防止看不清 */
 .bg-image-page .wedding-arrow {
+    /* 这里保持白色，因为在深色照片上白色最清晰 */
     border-right: 2px solid rgba(255, 255, 255, 0.8);
     border-bottom: 2px solid rgba(255, 255, 255, 0.8);
 }
@@ -659,4 +760,169 @@ svg *, canvas {
 .couple-names *, [class*="couple"] * {
      font-family: 'Great Vibes', 'Parisienne', cursive !important;
      text-transform: none !important;
+}
+
+
+/* ==========================================================================
+   🎨 手绘长图时间轴精准文字对齐系统
+   ========================================================================== */
+
+/* 1. 整体大容器：相对定位，用来锁住内部的文字 */
+.timeline-container-v2 {
+    position: relative !important;
+    width: 95% !important;
+    margin: 40px auto 10px auto !important;
+    overflow: visible !important;
+}
+
+/* 2. 让这一整张手绘大长图完美满幅显示，去掉平铺 */
+.timeline-bg-image {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    opacity: 0.85 !important; /* 微微柔和一点，让上面的文字更清晰 */
+}
+
+/* 3. 文字覆盖层：铺满整张图的位置 */
+.timeline-text-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* 4. 单个时间文字节点的通用基础配置 */
+.time-spot {
+    position: absolute !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    bottom: -45px !important; /* ⚡ 核心调整：把文字和时间强制推到手绘图的下方，留出空间 */
+    width: 30% !important;
+}
+
+/* 💡 正确匹配：让 spot-time 和 spot-title 无缝吃掉主干红线，消灭色差 */
+.spot-time {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #8c221e !important; /* 精致暗红色 */
+    letter-spacing: 0.5px !important;
+    
+    /* ⚡ 核心：将背景色同步为奶油燕麦色，这样文字两侧就能完美遮挡住横线，形成刻度感 */
+    background-color: transparent !important; 
+    padding: 0 !important;
+}
+
+.spot-title {
+    font-size: 12px !important;
+    color: #5a5a5a !important;
+    margin-top: 3px !important;
+    letter-spacing: 1px !important;
+    
+    /* ⚡ 同样垫上燕麦色底色 */
+    background-color: transparent!important;
+    padding: 0 !important;
+}
+
+/* 5. ⚡ 灵魂三度空间对齐：通过百分比，让三段文字刚好对准图上的三个画面 */
+.spot-left {
+    left: 2% !important; /* 精准对齐最左边的手绘拱门 */
+}
+
+.spot-center {
+    left: 35% !important; /* 精准对齐中间的香槟塔 */
+}
+
+.spot-right {
+    right: 2% !important; /* 精准对齐最右边的复古晚宴桌 */
+}
+
+/* ==========================================================================
+   🖼️ 手绘流程页（Timeline Page）中式请柬意境排版系统
+   ========================================================================== */
+
+/* 让整页的元素（文字和下面的手绘图）上下拥有完美的呼吸感分布 */
+.timeline-only-page {
+    background-color: #f3eada !important; /* 锁死 AI 小麦色底色 */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 40px 24px !important;
+    box-sizing: border-box !important;
+}
+
+/* 顶部新增字体的容器：拉开与手绘图的间距 */
+.timeline-header-meta {
+    text-align: center !important;
+    margin-bottom: 35px !important; /* 让文字和下面的手绘图保持高奢画册的距离 */
+    line-height: 2.0 !important;
+}
+
+/* “囍”字装饰线 */
+.meta-xi {
+    color: #8c221e !important; /* 暗红色调 */
+    font-size: 16px !important;
+    font-weight: bold !important;
+    letter-spacing: 4px !important;
+    margin-bottom: 12px !important;
+}
+
+/* 阳历日期 */
+.meta-gregorian {
+    font-size: 15px !important;
+    color: #8c221e !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+}
+
+/* 阴历与具体时刻 */
+.meta-lunar {
+    font-size: 13px !important;
+    color: #7e6b5a !important; /* 优雅的灰褐色，完美衬托不抢戏 */
+    letter-spacing: 0.5px !important;
+}
+
+/* 确保你原本的手绘容器在加入了文字后依然保持完美的100%全宽平铺 */
+.timeline-container-v2 {
+    width: 100% !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* ==========================================================================
+   🌾 全站背景修复：恢复照片页面背景，只对特定页面启用小麦色
+   ========================================================================== */
+
+/* 1. 只给 body 和 html 设置基础色，不要碰 swiper-slide */
+body, html {
+    background-color: #f3eada !important;
+}
+
+/* 2. 只有那些需要纯色背景的特定页面，我们才强制赋色 */
+/* 把你想要小麦色的页面类名填在这里，比如倒计时页 */
+.countdown-ins-page, .timeline-only-page {
+    background-color: #f3eada !important;
+    background-image: none !important;
+}
+
+/* 3. 恢复所有照片页面的底色为透明，这样它们原本的 background-image 就能显示出来了 */
+.swiper-slide {
+    background-color: transparent !important;
+}
+
+/* 4. 誓死捍卫第一页的封面 */
+.book-cover-overlay,
+.book-door,
+.swiper-slide:first-child {
+    background-color: transparent !important;
+}
+
+/* 5. 确保 Story 页文案以及其他页面的背景透明 */
+.story-page, .story-words, .time-spot, .spot-time, .spot-title {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
 }
