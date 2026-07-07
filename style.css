@@ -629,3 +629,34 @@ svg *, canvas {
     white-space: nowrap !important;
     text-transform: none !important;
 }
+
+/* ==========================================================================
+   🚨 抢救高奢 Stylish 英文手写体！从宋体大军中定向解救第二页名字
+   ========================================================================== */
+
+/* 1. ⚡ 最高优先级定向爆破：
+   精准锁定第二页的新郎新娘名字区域（如果是 Canvas 渲染的名字，必须用这个！） */
+.swiper-slide:nth-child(2) .couple-names,
+.swiper-slide:nth-child(2) [id*="couple"],
+.swiper-slide:nth-child(2) [class*="couple"],
+.swiper-slide:nth-child(2) canvas[class*="name"] {
+    
+    /* 💍 誓死还原高奢手写体：强行调用 Google Fonts 网络字体，不被上面的宋体覆盖 */
+    font-family: 'Great Vibes', 'Parisienne', cursive !important;
+    
+    /* ⚡ 核心暴击：由于刚才把 text-transform 给 normal 了，手写体需要确保英文数字完美呈现大写或首字母大写，
+       所以这里必须把 text-transform 强制改回 none 或者配合代码的大写形式 */
+    text-transform: none !important; 
+    
+    /* 优雅还原手写体的其他高奢细节 */
+    font-size: 36px !important;
+    font-weight: 500 !important;
+    white-space: nowrap !important;
+    letter-spacing: 1px !important;
+}
+
+/* 如果你的手写体是用 <h1> 或 <span> 包在 couple-names 里面的，强行让里面的文本也手写化 */
+.couple-names *, [class*="couple"] * {
+     font-family: 'Great Vibes', 'Parisienne', cursive !important;
+     text-transform: none !important;
+}
