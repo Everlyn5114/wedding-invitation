@@ -10,14 +10,13 @@
 body, html {
     position: relative;
     height: 100%;
-    /* 💡 核心升级：中文优先调用优雅的衬线体系列（如思源宋体），英文数字优先调用复古的 Georgia。
-       这样搭配出来的字体会非常有诗意，完美契合你的花园婚礼风！ */
-    font-family: "Georgia", "Nimbus Roman No9 L", "Songti SC", "Source Han Serif SC", "STSong", "SimSun", serif;
+    /* 💡 核心升级：把 'Noto Serif SC' 顶到中文第一顺位，确保安卓和苹果手机都能在线加载优雅的宋体！ */
+    font-family: "Georgia", "Nimbus Roman No9 L", "Noto Serif SC", "Songti SC", "Source Han Serif SC", serif;
     color: #4a4a4a;
     text-align: center;
     background-color: #fff8f9;
-    overflow: hidden; /* 必须锁定，防止手机端上下晃动 */
-    -webkit-font-smoothing: antialiased; /* 让字体在手机和电脑端显得更锐利精致 */
+    overflow: hidden; 
+    -webkit-font-smoothing: antialiased;
 }
 
 .swiper {
@@ -34,15 +33,14 @@ body, html {
     position: relative;
 }
 
-/* 统一的大标题（如：婚礼资讯、我们的故事、正式邀请） */
 .section-title {
-    /* 💡 核心升级：抛弃原本扎眼的亮粉色，统一换成和水彩背景最搭的莫兰迪灰蓝色 */
     color: #465f78; 
     font-size: 28px;
     margin-bottom: 30px;
     letter-spacing: 4px;
     font-weight: 600;
-    font-family: "Georgia", "Songti SC", "Source Han Serif SC", serif;
+    /* 💡 标题同步调用思源宋体 */
+    font-family: "Georgia", "Noto Serif SC", "Songti SC", serif;
 }
 
 /* ==========================================================================
@@ -298,7 +296,7 @@ body, html {
     font-size: 22px !important;
     font-weight: bold !important;
     color: #ffffff;
-    background: #465f78; /* 倒计时方块颜色也同步换成高级莫兰迪灰蓝 */
+    background: #475460; /* 倒计时方块颜色也同步换成高级莫兰迪灰蓝 */
     padding: 5px 8px;
     border-radius: 6px;
     min-width: 38px;
@@ -312,7 +310,7 @@ body, html {
 
 /* --- 第6页：时间流程线 --- */
 .schedule-card {
-    background: white;
+    background: rgb(255, 255, 255);
     width: 90%;
     max-width: 320px;
     padding: 25px 20px;
@@ -323,7 +321,7 @@ body, html {
 .schedule-date {
     font-size: 15px;
     font-weight: bold;
-    color: #d63384;
+    color: #bd9868;
     margin-bottom: 20px;
     border-bottom: 1px dashed #ffccd5;
     padding-bottom: 10px;
@@ -331,7 +329,7 @@ body, html {
 
 .process-line {
     text-align: left;
-    border-left: 2px solid #ffccd5;
+    border-left: 2px solid #e3c0c6;
     padding-left: 15px;
     margin-left: 10px;
 }
@@ -346,7 +344,7 @@ body, html {
     position: absolute;
     left: -20px; top: 5px;
     width: 8px; height: 8px;
-    background: #ff4d6d;
+    background: #f5c491;
     border-radius: 50%;
 }
 
@@ -395,7 +393,7 @@ body, html {
 
 .nav-btn {
     display: block;
-    background: #ff4d6d;
+    background: #69522a;
     color: white;
     text-decoration: none;
     padding: 10px;
@@ -432,7 +430,7 @@ body, html {
 }
 
 .rsvp-form input:focus, .rsvp-form select:focus, .rsvp-form textarea:focus {
-    border-color: #d63384;
+    border-color: rgb(128, 91, 40);
     box-shadow: 0 0 5px rgba(214, 51, 132, 0.2);
 }
 
@@ -443,7 +441,7 @@ body, html {
 
 .submit-btn {
     width: 100%;
-    background: #d63384;
+    background: #69522a;
     color: white;
     border: none;
     padding: 12px;
