@@ -595,3 +595,37 @@ h1, h2, h3, p, span, div[class*="title"], div[class*="subtitle"] {
     max-height: 100vh !important;
 }
 
+
+/* ==========================================================================
+   🚨 终极核武器：前三页地毯式中文字体无死角强制烙印
+   ========================================================================== */
+
+/* 1. 强行穿透前三页的所有层级，包括各种诡异的自定组件 */
+.swiper-slide:nth-child(1) *,
+.swiper-slide:nth-child(2) *,
+.swiper-slide:nth-child(3) * {
+    /* ⚡ 强制重写字体族：不管你是什么标签，全部强制换成思源宋体 */
+    font-family: "Noto Serif SC", "Songti SC", serif !important;
+    
+    /* ⚡ 彻底清除可能导致中文字体渲染失败的“强制大写”或“小型大写字母”属性 */
+    text-transform: none !important;
+    font-variant: normal !important;
+}
+
+/* 2. 针对可能伪装成文字的 SVG 图形字体进行精准爆破 */
+.swiper-slide:nth-child(1) text,
+.swiper-slide:nth-child(2) text,
+.swiper-slide:nth-child(3) text,
+svg *, canvas {
+    font-family: "Noto Serif SC", "Songti SC", serif !important;
+}
+
+/* 3. 🛡️ 誓死守卫第二页新郎新娘名字的连笔英文手写体，绝对不准被上面误伤 */
+.couple-names, 
+.couple-names *, 
+[class*="couple"] {
+    font-family: 'Great Vibes', 'Parisienne', cursive !important;
+    font-size: 36px !important;
+    white-space: nowrap !important;
+    text-transform: none !important;
+}

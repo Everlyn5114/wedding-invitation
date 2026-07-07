@@ -51,7 +51,7 @@ const swiper = new Swiper(".mySwiper", {
     // 💡 核心优化三：为了配合 freeMode 的完美匀速，必须把切换效果强行锁定为线性（linear）
     // 否则默认的 ease-out 缓动函数会在接近页面末尾时自动减速、造成停顿错觉
     resistanceRatio: 0,
-    loop: false, /* 让请柬无限循环流动 */
+    loop: false, 
     
     on: {
         setTranslate: function() {
@@ -192,34 +192,5 @@ const gallerySwiper = new Swiper(".gallerySwiper", {
     },
 });
 
-// ==========================================================================
-// 6. RSVP 表单提交拦截与本地交互
-// ==========================================================================
-const rsvpForm = document.getElementById('wedding-rsvp-form');
 
-if (rsvpForm) {
-    rsvpForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // 阻止网页刷新
 
-        const name = document.getElementById('guest-name').value;
-        const attendance = document.getElementById('guest-attendance').value;
-        const count = document.getElementById('guest-count').value;
-        const wish = document.getElementById('guest-wish').value;
-
-        if (attendance === "出席") {
-            alert(`🎉 谢谢您的祝福，${name}！\n我们已收到您的赴宴确认（共 ${count} 位）。\n期待在 2026 年 9 月 20 日与您相见！🤍`);
-        } else {
-            alert(`🌸 谢谢您的祝福，${name}！\n虽然您无法亲临现场，但您的心意 Joshua & Hannah 已经收到啦！谢谢你！`);
-        }
-
-        console.log("💌 收到新的 RSVP 回执：", {
-            姓名: name,
-            是否出席: attendance,
-            出席人数: count,
-            祝福语: wish,
-            提交时间: new Date().toLocaleString()
-        });
-
-        rsvpForm.reset();
-    });
-}
