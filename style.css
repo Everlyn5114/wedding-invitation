@@ -403,55 +403,6 @@ body, html {
     box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
 }
 
-/* --- 第8页：RSVP 出席确认表单 --- */
-.rsvp-page {
-    background-color: #fff5f7;
-}
-
-.rsvp-form {
-    width: 90%;
-    max-width: 320px;
-}
-
-.input-group {
-    margin-bottom: 15px;
-}
-
-.rsvp-form input, .rsvp-form select, .rsvp-form textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ffccd5;
-    border-radius: 12px;
-    font-size: 14px;
-    outline: none;
-    background: white;
-    color: #333;
-    transition: all 0.3s;
-}
-
-.rsvp-form input:focus, .rsvp-form select:focus, .rsvp-form textarea:focus {
-    border-color: rgb(128, 91, 40);
-    box-shadow: 0 0 5px rgba(214, 51, 132, 0.2);
-}
-
-.rsvp-form textarea {
-    height: 80px;
-    resize: none;
-}
-
-.submit-btn {
-    width: 100%;
-    background: #69522a;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(214, 51, 132, 0.3);
-}
-
 /* ==========================================================================
    5. 经典物理跳动小箭头（全屏通用）
    ========================================================================== */
@@ -603,3 +554,44 @@ body, html {
     pointer-events: none; 
     visibility: hidden; 
 }
+
+/* ⚡ 强行让 Swiper 的位移动画变成一成不变的线性匀速，彻底消灭任何由于缓动导致的停顿感 */
+.swiper-wrapper {
+    transition-timing-function: linear !important;
+    -webkit-transition-timing-function: linear !important;
+}
+
+/* ==========================================================================
+   🌸 针对前三页字体的“定向暴击强指定”（彻底解决前三页 default 黑体问题）
+   ========================================================================== */
+
+/* 1. 强行捕获前三页可能用到的所有封面大标题、副标题、以及段落标签 */
+.swiper-slide:nth-child(1) *,
+.swiper-slide:nth-child(2) *,
+.swiper-slide:nth-child(3) *,
+.cover-wrapper *,
+.hero-section *,
+.page1 *, .page2 *, .page3 *,
+h1, h2, h3, p, span, div[class*="title"], div[class*="subtitle"] {
+    
+    /* ⚡ 强制让前三页的所有文字（除了第二页新郎新娘名字）全部屈服于思源宋体 */
+    font-family: "Noto Serif SC", "Georgia", "Songti SC", serif !important;
+}
+
+/* 2. ⚡ 极其重要：誓死捍卫第二页新郎新娘名字的英文手写体，绝对不能被上面的宋体误伤 */
+.couple-names, 
+.couple-names *, 
+[class*="couple"] {
+    font-family: 'Great Vibes', 'Parisienne', cursive !important;
+    font-size: 36px !important;
+    white-space: nowrap !important;
+}
+
+/* ==========================================================================
+   🧹 清理 RSVP 后的底层高度自适应
+   ========================================================================== */
+.swiper-slide {
+    height: 100vh !important;
+    max-height: 100vh !important;
+}
+

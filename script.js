@@ -22,26 +22,37 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================================================
-// 1. 初始化 Swiper (终极无缝匀速滚动版)
+// 1. 初始化 Swiper (终极无缝匀速丝滑流动版 - 消除停顿)
 // ==========================================================================
 const swiper = new Swiper(".mySwiper", {
     direction: "vertical",
     spaceBetween: 0,
     mousewheel: true,
-    speed: 12000, // 👈 核心：设置滑一页需要整整 6 秒，让它过得极慢极丝滑
-    allowTouchMove: true, // 允许用户自己用手指滑
     
-    // 💡 升级为：无缝匀速跑马灯模式
+    // 优雅流动的电影谢幕速度（12000毫秒滑完一页，可根据喜好调节）
+    speed: 12000, 
+    
+    allowTouchMove: true,
+    
+    // 💡 核心优化一：匀速流动的奥秘，delay 必须为 0，且不能有任何延迟间隔
     autoplay: {
-        delay: 0, // 👈 核心：间隔时间为 0！意味着上一页刚完下一页立刻连着滚，不停顿
-        disableOnInteraction: false, // 用户滑过之后，不彻底摧毁自动播放
+        delay: 0,
+        disableOnInteraction: false,
+        stopOnLastSlide: true,
     },
     
-    // 强制让它的滚动动画变成“匀速直线运动”，彻底抛弃生硬的卡顿跳跃
+    // 💡 核心优化二：彻底解放自由模式，斩断“页面停顿对齐”的罪魁祸首
     freeMode: {
         enabled: true,
         momentum: false,
+        sticky: false,   /* ⚡ 关键：禁用粘性贴合，防止每到一页边缘就强行吸附停顿 */
     },
+    
+    // 💡 核心优化三：为了配合 freeMode 的完美匀速，必须把切换效果强行锁定为线性（linear）
+    // 否则默认的 ease-out 缓动函数会在接近页面末尾时自动减速、造成停顿错觉
+    resistanceRatio: 0,
+    loop: false, /* 让请柬无限循环流动 */
+    
     on: {
         setTranslate: function() {
             AOS.refresh();
@@ -51,7 +62,6 @@ const swiper = new Swiper(".mySwiper", {
         }
     }
 });
-
 // 默认一进来先让自动滑动【暂停】
 swiper.autoplay.stop();
 
