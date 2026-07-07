@@ -183,6 +183,12 @@ body, html {
     height: 100vh !important; 
     max-height: 100vh !important;
     overflow: hidden !important; 
+
+/* ⚡ 关键：在这里加上 Flex 布局，让里面的文字容器整体垂直居中 */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
 
 /* ⚡ 极其重要：既然加回了照片背景，为了衬托白色或者暗色文字，
@@ -198,7 +204,7 @@ body, html {
 }
 
 .font-romantic {
-    color: #ffffff !important; /* ⚡ 既然有了照片背景，文字改成白色会更清晰高级 */
+    color: #333333 !important; /* ⚡ 既然有了照片背景，文字改成白色会更清晰高级 */
     background: transparent !important; 
     position: relative; z-index: 2; /* 确保文字在遮罩层上方 */
 }
@@ -617,7 +623,7 @@ body, html {
 .ribbon-tips {
     margin-top: 180px; /* 👈 稍微往下挪一点，避开原图自带的蓝色大蝴蝶结 */
     font-size: 14px;
-    color: #465f78;
+    color: #8c221e;
     font-weight: bold;
     letter-spacing: 3px;
     background: rgba(255, 255, 255, 0.9); /* 半透明手作纸张感 */
