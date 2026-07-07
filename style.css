@@ -1,0 +1,607 @@
+/* ==========================================================================
+   1. 全局初始化与韩系高奢水彩排版（全面升级优雅字体与莫兰迪灰蓝）
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    position: relative;
+    height: 100%;
+    /* 💡 核心升级：中文优先调用优雅的衬线体系列（如思源宋体），英文数字优先调用复古的 Georgia。
+       这样搭配出来的字体会非常有诗意，完美契合你的花园婚礼风！ */
+    font-family: "Georgia", "Nimbus Roman No9 L", "Songti SC", "Source Han Serif SC", "STSong", "SimSun", serif;
+    color: #4a4a4a;
+    text-align: center;
+    background-color: #fff8f9;
+    overflow: hidden; /* 必须锁定，防止手机端上下晃动 */
+    -webkit-font-smoothing: antialiased; /* 让字体在手机和电脑端显得更锐利精致 */
+}
+
+.swiper {
+    width: 100%;
+    height: 100vh;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    position: relative;
+}
+
+/* 统一的大标题（如：婚礼资讯、我们的故事、正式邀请） */
+.section-title {
+    /* 💡 核心升级：抛弃原本扎眼的亮粉色，统一换成和水彩背景最搭的莫兰迪灰蓝色 */
+    color: #465f78; 
+    font-size: 28px;
+    margin-bottom: 30px;
+    letter-spacing: 4px;
+    font-weight: 600;
+    font-family: "Georgia", "Songti SC", "Source Han Serif SC", serif;
+}
+
+/* ==========================================================================
+   2. 婚贝风音乐按钮（经典旋转图标）
+   ========================================================================== */
+/* ==========================================================================
+   🎵 音乐按钮：全面升级为高奢水彩毛玻璃风
+   ========================================================================== */
+#music-btn, .music-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    
+    /* 💡 核心升级：改用高级的半透明暖白，自带毛玻璃质感，能若隐若现透出背景的鲜花 */
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    /* 💡 核心升级：把里面音符的颜色改成我们标志性的莫兰迪灰蓝色 */
+    color: #b47829 !important;
+    
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* 确保悬浮在页面最上层 */
+    cursor: pointer;
+    font-size: 18px;
+    
+    /* 让周围带着一圈极其淡雅的雾面灰蓝投影 */
+    box-shadow: 0 4px 12px rgba(103, 138, 173, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    
+    transition: all 0.3s ease;
+}
+
+/* 当音乐正在播放旋转时的动态（保持原本的旋转逻辑，但确保颜色不翻车） */
+.music-button.playing {
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   3. 沉浸式大图背景页通用遮罩（核心！）
+   ========================================================================== */
+.bg-image-page {
+    background-size: cover;
+    background-position: center;
+}
+
+/* 深色遮罩：给第3、5页用，让白色文字像悬浮在胶片上一样高级 */
+.overlay-dark {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/* 浅色柔光遮罩：给第2页用，若照片偏浅可衬托暗字 */
+.overlay-light {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 245, 247, 0.3);
+    z-index: 1;
+}
+
+.page-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 320px;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   4. 具体页面定制（1 - 8 页）
+   ========================================================================== */
+
+.cover-page {
+    background-image: url("CoverPage.jpeg");
+    background-size: cover;
+    background-position: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.main-title {
+    /* 💡 核心升级：换上西式古典衬线体，让“婚礼邀请函”五个字像艺术字一样优雅 */
+    font-family: "Georgia", "Songti SC", "Source Han Serif SC", serif;
+    font-size: 38px;
+    letter-spacing: 6px;
+    font-weight: 500; /* 稍微调细一点点，更有手作质感 */
+    color: #e6e6e6;
+}
+
+.title-line {
+    width: 60px;
+    height: 1px;
+    background: #ffffff;
+    margin: 15px auto;
+    opacity: 0.8;
+}
+
+.sub-title {
+    /* 💡 核心升级：拉大英文间距，瞬间做出法式大牌的呼吸感 */
+    font-family: "Georgia", serif;
+    font-size: 13px;
+    letter-spacing: 6px;
+    opacity: 0.95;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+/* --- 第2页：诚挚邀请诗歌风 --- */
+.font-romantic {
+    color: #333333;
+}
+
+.poem-text {
+    /* 💡 核心升级：换上印刷体宋体 */
+    font-family: "Songti SC", "Source Han Serif SC", "SimSun", serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.couple-names {
+    font-family: 'Great Vibes', 'Parisienne', 'Cedarville Cursive', cursive;
+    
+    /* 💡 稍微把字号从 46px 优化到 36px，既能保持大气的视觉，又能确保手机上能塞进一行 */
+    font-size: 36px !important; 
+    
+    /* ⚡ 核心加码：强制文字在一行内显示，绝对不换行 */
+    white-space: nowrap !important;
+    
+    /* 让容器拥有最大宽度和自动缩放感 */
+    width: 100%;
+    max-width: 100vw;
+    display: block;
+    
+    text-transform: none !important; 
+    letter-spacing: 1px !important;
+    color: #392f09; 
+    margin: 15px auto;
+    font-weight: 500;
+}
+
+.poem-sub {
+    font-family: "Songti SC", "Source Han Serif SC", serif;
+    font-size: 14px;
+    color: #777777;
+}
+
+/* --- 第3页：照片文案页 --- */
+.story-words {
+    /* 💡 核心升级：让故事文案像读情书一样温柔 */
+    font-family: "Songti SC", "Source Han Serif SC", "SimSun", serif;
+    font-size: 16px;
+    line-height: 2.2;
+    letter-spacing: 2px;
+}
+
+/* --- 第4页：遇见彼此（新人介绍） --- */
+.intro-container {
+    width: 100%;
+    max-width: 340px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.intro-box {
+    flex: 1;
+    background: white;
+    padding: 15px 10px;
+    border-radius: 16px;
+    box-shadow: 0 6px 15px rgba(214, 51, 132, 0.05);
+}
+
+.avatar-holder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #ffccd5;
+}
+
+.intro-box h3 {
+    font-size: 16px;
+    color: #d63384;
+    margin-bottom: 8px;
+}
+
+.intro-box p {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.5;
+}
+
+/* --- 第5页：正式邀请+微缩倒计时 --- */
+.invitation-main {
+    font-size: 15px;
+    line-height: 1.8;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+.countdown-card-mini {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px); /* 毛玻璃效果 */
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 15px;
+    border-radius: 16px;
+    width: 100%;
+}
+
+.countdown-card-mini p {
+    font-size: 13px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-box span {
+    font-family: "Georgia", serif !important;
+    font-size: 22px !important;
+    font-weight: bold !important;
+    color: #ffffff;
+    background: #465f78; /* 倒计时方块颜色也同步换成高级莫兰迪灰蓝 */
+    padding: 5px 8px;
+    border-radius: 6px;
+    min-width: 38px;
+}
+
+.time-box label {
+    font-size: 10px;
+    margin-top: 4px;
+    opacity: 0.8;
+}
+
+/* --- 第6页：时间流程线 --- */
+.schedule-card {
+    background: white;
+    width: 90%;
+    max-width: 320px;
+    padding: 25px 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(214, 51, 132, 0.06);
+}
+
+.schedule-date {
+    font-size: 15px;
+    font-weight: bold;
+    color: #d63384;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #ffccd5;
+    padding-bottom: 10px;
+}
+
+.process-line {
+    text-align: left;
+    border-left: 2px solid #ffccd5;
+    padding-left: 15px;
+    margin-left: 10px;
+}
+
+.process-item {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.process-item::before {
+    content: '';
+    position: absolute;
+    left: -20px; top: 5px;
+    width: 8px; height: 8px;
+    background: #ff4d6d;
+    border-radius: 50%;
+}
+
+.process-item .time {
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+}
+
+.process-item .action {
+    color: #666;
+    font-size: 14px;
+}
+
+/* --- 第7页：地址卡片与一键导航 --- */
+.venue-card {
+    background: white;
+    width: 90%;
+    max-width: 320px;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(214, 51, 132, 0.06);
+}
+
+.venue-img {
+    width: 100%;
+    height: 140px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.venue-card h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.venue-addr {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.nav-btn {
+    display: block;
+    background: #ff4d6d;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+}
+
+/* --- 第8页：RSVP 出席确认表单 --- */
+.rsvp-page {
+    background-color: #fff5f7;
+}
+
+.rsvp-form {
+    width: 90%;
+    max-width: 320px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.rsvp-form input, .rsvp-form select, .rsvp-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ffccd5;
+    border-radius: 12px;
+    font-size: 14px;
+    outline: none;
+    background: white;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.rsvp-form input:focus, .rsvp-form select:focus, .rsvp-form textarea:focus {
+    border-color: #d63384;
+    box-shadow: 0 0 5px rgba(214, 51, 132, 0.2);
+}
+
+.rsvp-form textarea {
+    height: 80px;
+    resize: none;
+}
+
+.submit-btn {
+    width: 100%;
+    background: #d63384;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(214, 51, 132, 0.3);
+}
+
+/* ==========================================================================
+   5. 经典物理跳动小箭头（全屏通用）
+   ========================================================================== */
+.wedding-arrow {
+    position: absolute !important;
+    bottom: 25px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid rgba(214, 51, 132, 0.6);
+    border-bottom: 2px solid rgba(214, 51, 132, 0.6);
+    transform: translateX(-50%) rotate(45deg) !important; /* 优雅的V字形小箭头 */
+    z-index: 10;
+    animation: bounceArrow 2s infinite;
+}
+
+/* 针对暗色背景页，箭头强制变成白色，防止看不清 */
+.bg-image-page .wedding-arrow {
+    border-right: 2px solid rgba(255, 255, 255, 0.8);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+@keyframes bounceArrow {
+    0%, 100% { bottom: 25px; opacity: 0.4; }
+    50% { bottom: 15px; opacity: 1; }
+}
+
+/* 解决 AOS 冲突：强制通电显示 */
+.swiper-slide [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+
+/* ==========================================================================
+   🌸 梦幻韩系：真·水彩花园插画开场特效 (告别丑陋白墙)
+   ========================================================================== */
+.book-cover-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1500px; /* 增强3D翻开透视感 */
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* 左右两扇大门：直接合体成整张水彩画 */
+.book-door {
+    position: absolute;
+    top: 0; 
+    width: 50%; 
+    height: 100%;
+    /* 核心：用你发的水彩画作为背景 */
+    background-image: url('garden.bg.png'); 
+    background-size: 200% 100%; /* 👈 极其关键：让背景图放大到200%，两扇门刚好各拼一半 */
+    background-repeat: no-repeat;
+    transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.5s;
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
+}
+
+/* 左大门：显示水彩画的左半边 */
+.door-left { 
+    left: 0; 
+    background-position: left center; 
+    transform-origin: left center; 
+}
+
+/* 右大门：显示水彩画的右半边 */
+.door-right { 
+    right: 0; 
+    background-position: right center; 
+    transform-origin: right center; 
+}
+
+/* 丝带容器：完美对齐水彩图里丝带的位置 */
+.ribbon-container {
+    position: absolute;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10002;
+    transition: all 0.8s ease;
+    /* 稍微往下挪一点，卡在水彩盒子的核心位置 */
+    transform: translateY(80px); 
+}
+
+/* ==========================================================================
+   🌸 终极优化：隐藏代码生成的丝带与Emoji，完美呈现原图手绘丝带
+   ========================================================================== */
+.ribbon-horizontal {
+    position: absolute;
+    width: 100%; 
+    height: 120px; /* 👈 放大点击感应区域，让宾客点在原图丝带附近都能触发 */
+    background: transparent !important; /* 👈 彻底变透明，不要那条蓝色的线了 */
+    box-shadow: none !important;        /* 👈 扔掉生硬的阴影 */
+}
+
+.ribbon-bow {
+    display: none !important; /* 👈 彻底干掉那个红色的粉色ribbon Emoji */
+}
+
+/* 调整一下点击标签的位置，让它刚好优雅地悬浮在水彩礼盒的下方 */
+.ribbon-tips {
+    margin-top: 180px; /* 👈 稍微往下挪一点，避开原图自带的蓝色大蝴蝶结 */
+    font-size: 14px;
+    color: #465f78;
+    font-weight: bold;
+    letter-spacing: 3px;
+    background: rgba(255, 255, 255, 0.9); /* 半透明手作纸张感 */
+    padding: 10px 28px;
+    border-radius: 20px; /* 变成圆角胶囊，更柔和 */
+    border: 1px solid rgba(70, 95, 120, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    animation: pulseButton 2s infinite ease-in-out; /* 让按钮微微呼吸提示点击 */
+}
+
+@keyframes pulseButton {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.04); opacity: 1; }
+}
+/* ==========================================================================
+   🎬 3D 华丽翻开动画
+   ========================================================================== */
+.book-cover-overlay.opened .ribbon-container { 
+    opacity: 0; 
+    transform: translateY(80px) scale(0.9); 
+    pointer-events: none; 
+}
+
+/* 真正的3D立体翻书效果，两边带有一点点弧度淡出 */
+.book-cover-overlay.opened .door-left { 
+    transform: rotateY(-110deg); 
+    opacity: 0; 
+}
+.book-cover-overlay.opened .door-right { 
+    transform: rotateY(110deg); 
+    opacity: 0; 
+}
+
+.book-cover-overlay.opened { 
+    pointer-events: none; 
+    visibility: hidden; 
+}
